@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SlothBotanist</title>
+<meta name="description" content="Drinks made only from what is already in your kitchen.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%AB%96%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:ital,wght@0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Illustration library: flat pastel drawings, reused with <use> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gJuice" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFC46B"/>
+      <stop offset="1" stop-color="#FF9A5C"/>
+    </linearGradient>
+    <linearGradient id="gBerry" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFB3C7"/>
+      <stop offset="1" stop-color="#E3A4F2"/>
+    </linearGradient>
+
+    <!-- the one leaf -->
+    <symbol id="leaf" viewBox="0 0 120 160">
+      <path d="M60 6C102 42 112 102 60 154 8 102 18 42 60 6Z" fill="#8FD0A8"/>
+      <path d="M60 6C102 42 112 102 60 154Z" fill="#6DBB92"/>
+      <path d="M60 24V140M60 66 40 48M60 66 80 48M60 98 36 78M60 98 84 78" fill="none" stroke="#EFFFF6" stroke-opacity=".85" stroke-width="3.5" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- tea kettle -->
+    <symbol id="kettle" viewBox="0 0 170 150">
+      <g fill="none" stroke="#FFF1C9" stroke-opacity=".75" stroke-width="4" stroke-linecap="round">
+        <path d="M150 36c-7-9 7-13 0-24"/>
+        <path d="M162 40c-7-9 7-13 0-24"/>
+      </g>
+      <path d="M50 44C54 2 114 2 118 44" fill="none" stroke="#FFF1C9" stroke-width="9" stroke-linecap="round"/>
+      <path d="M120 72C138 68 146 54 152 46L163 52C159 70 150 92 124 100Z" fill="#FF8C99"/>
+      <path d="M28 84C28 54 52 38 84 38S140 54 140 84V118C140 134 128 142 112 142H56C40 142 28 134 28 118Z" fill="#FFB3BA"/>
+      <path d="M98 40C126 46 140 60 140 84V118C140 134 128 142 112 142H98C114 132 120 110 120 86C120 64 110 48 98 40Z" fill="#FF9AA2" opacity=".6"/>
+      <path d="M28 94H140V104H28Z" fill="#FFF1C9" opacity=".8"/>
+      <circle cx="52" cy="124" r="4" fill="#FFF1C9" opacity=".8"/>
+      <circle cx="84" cy="124" r="4" fill="#FFF1C9" opacity=".8"/>
+      <circle cx="116" cy="124" r="4" fill="#FFF1C9" opacity=".8"/>
+      <path d="M58 40C58 24 110 24 110 40Z" fill="#FFD6DA"/>
+      <circle cx="84" cy="24" r="7" fill="#FFF1C9"/>
+      <path d="M40 72C42 60 52 52 62 48" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- juice glass for the hero: orange juice, ice, citrus wedge -->
+    <symbol id="glassA" viewBox="0 0 110 160">
+      <path d="M78 8H71L57 104" fill="none" stroke="#FFB3BA" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M16 36H94L86 138C85 148 79 154 70 154H40C31 154 25 148 24 138Z" fill="#FFFBEF" fill-opacity=".3"/>
+      <path d="M19 64H91L86 138C85 148 79 154 70 154H40C31 154 25 148 24 138Z" fill="url(#gJuice)"/>
+      <ellipse cx="55" cy="64" rx="36" ry="6" fill="#FFD58A"/>
+      <rect x="34" y="82" width="22" height="22" rx="6" fill="#fff" fill-opacity=".35" transform="rotate(-12 45 93)"/>
+      <rect x="58" y="102" width="20" height="20" rx="6" fill="#fff" fill-opacity=".3" transform="rotate(14 68 112)"/>
+      <ellipse cx="55" cy="36" rx="39" ry="5" fill="#FFFBEF" fill-opacity=".55"/>
+      <path d="M26 48L32 136" stroke="#fff" stroke-opacity=".5" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="90" cy="38" r="17" fill="#FFC46B"/>
+      <circle cx="90" cy="38" r="12.5" fill="#FFE8B0"/>
+      <path d="M90 38V26M90 38 80 31M90 38 80 45M90 38V50M90 38 100 45M90 38 100 31" fill="none" stroke="#FFC46B" stroke-width="2.5" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- a different glass for the sidebar: tall berry smoothie -->
+    <symbol id="glassB" viewBox="0 0 110 190">
+      <path d="M26 34H84L78 172C77.5 180 72 186 64 186H46C38 186 32.5 180 32 172Z" fill="#FFFBEF" fill-opacity=".22"/>
+      <path d="M29 66H81L78 172C77.5 180 72 186 64 186H46C38 186 32.5 180 32 172Z" fill="url(#gBerry)"/>
+      <path d="M31 124H79L78 172C77.5 180 72 186 64 186H46C38 186 32.5 180 32 172Z" fill="#C79BF2" fill-opacity=".5"/>
+      <ellipse cx="55" cy="66" rx="26" ry="5" fill="#FFE3EA"/>
+      <path d="M38 50L42 170" stroke="#fff" stroke-opacity=".5" stroke-width="5" stroke-linecap="round"/>
+      <path d="M72 6 66 16 52 126" fill="none" stroke="#FFF1C9" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M72 6 66 16 52 126" fill="none" stroke="#FF9AA2" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 9"/>
+      <circle cx="43" cy="60" r="9" fill="#FF8FA3"/>
+      <circle cx="62" cy="56" r="9" fill="#FF8FA3"/>
+      <circle cx="53" cy="49" r="8" fill="#FFB3C1"/>
+      <path d="M60 46C66 36 78 38 80 44 74 50 64 50 60 46Z" fill="#8FD0A8"/>
+    </symbol>
+
+    <symbol id="citrus" viewBox="0 0 120 120">
+      <circle cx="60" cy="60" r="56" fill="#FFC46B"/>
+      <circle cx="60" cy="60" r="48" fill="#FFF1C9"/>
+      <circle cx="60" cy="60" r="42" fill="#FFB347"/>
+      <path d="M60 60V20M60 60V100M60 60H20M60 60H100M60 60 32 32M60 60 88 32M60 60 32 88M60 60 88 88" stroke="#FFF1C9" stroke-width="4" stroke-linecap="round" fill="none"/>
+      <circle cx="60" cy="60" r="5" fill="#FFF1C9"/>
+    </symbol>
+
+    <symbol id="flower" viewBox="-50 -50 100 100">
+      <g fill="#FFFBEF">
+        <ellipse cx="0" cy="-25" rx="13" ry="19"/>
+        <ellipse cx="0" cy="-25" rx="13" ry="19" transform="rotate(72)"/>
+        <ellipse cx="0" cy="-25" rx="13" ry="19" transform="rotate(144)"/>
+        <ellipse cx="0" cy="-25" rx="13" ry="19" transform="rotate(216)"/>
+        <ellipse cx="0" cy="-25" rx="13" ry="19" transform="rotate(288)"/>
+      </g>
+      <circle r="11" fill="#FFC46B"/>
+    </symbol>
+
+    <symbol id="cinnamon" viewBox="0 0 44 150">
+      <rect x="6" y="10" width="32" height="132" rx="15" fill="#D9925A"/>
+      <path d="M15 30V126" stroke="#F0B98A" stroke-width="5" stroke-linecap="round"/>
+      <ellipse cx="22" cy="22" rx="16" ry="9" fill="#B86E3A"/>
+      <path d="M13 22c3-4 15-4 18 0" fill="none" stroke="#D9925A" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="curl" viewBox="0 0 120 60">
+      <path d="M4 42C20 10 54 8 58 30c3 17-21 22-24 7-1-11 13-14 22-7s44 18 60-6" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="app">
+
+  <!-- ===== sidebar ===== -->
+  <aside class="side">
+    <div class="brand">
+      <p class="eyebrow">sip slowly,</p>
+      <h1>SlothBotanist</h1>
+      <small>Drinks from your shelf</small>
+    </div>
+
+    <nav class="nav" aria-label="Sections">
+      <button type="button" data-view="brew"><i class="ico"><svg viewBox="0 0 24 24"><path d="M5 10h11v4a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4z"/><path d="M16 12h1.5a2 2 0 0 1 0 4H16"/><path d="M8.5 4.5c0 1.5 1.5 1.5 1.5 3M12.5 4.5c0 1.5 1.5 1.5 1.5 3"/></svg></i><span>Brew it</span></button>
+      <button type="button" data-view="identify"><i class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg></i><span>Identify</span></button>
+      <button type="button" data-view="pages"><i class="ico"><svg viewBox="0 0 24 24"><path d="M7 3h8l4 4v14H7z"/><path d="M15 3v4h4M10 12h6M10 16h6"/></svg></i><span>Pages</span></button>
+      <button type="button" data-view="ledger"><i class="ico"><svg viewBox="0 0 24 24"><path d="M5 20V11M12 20V4M19 20v-7"/></svg></i><span>Ledger</span></button>
+      <button type="button" data-view="settings"><i class="ico"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></i><span>Settings</span></button>
+    </nav>
+
+    <div class="side-art" aria-hidden="true">
+      <span class="orb"></span>
+      <svg class="s-glass" viewBox="0 0 110 190"><use href="#glassB"/></svg>
+    </div>
+  </aside>
+
+  <!-- ===== main ===== -->
+  <main>
+    <div class="banner" id="banner" hidden role="status">
+      <span id="bannerText"></span>
+      <span class="banner-actions">
+        <button type="button" class="btn btn-ghost btn-sm" id="bannerBtn">Check again</button>
+        <button type="button" class="banner-x" id="bannerX" aria-label="Dismiss">×</button>
+      </span>
+    </div>
+
+    <!-- ---------- BREW ---------- -->
+    <section class="view" id="view-brew" hidden>
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="script">lovingly,</p>
+          <h2 class="display">Brew it</h2>
+          <p class="lede">Tell me what is on your shelf. I will make two drinks from it.</p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <span class="blob"></span>
+          <svg class="a-flower" viewBox="0 0 100 100"><use href="#flower"/></svg>
+          <svg class="a-cinn" viewBox="0 0 44 150"><use href="#cinnamon"/></svg>
+          <svg class="a-leaf" viewBox="0 0 120 160"><use href="#leaf"/></svg>
+          <svg class="a-kettle" viewBox="0 0 170 150"><use href="#kettle"/></svg>
+          <svg class="a-glass" viewBox="0 0 110 160"><use href="#glassA"/></svg>
+          <svg class="a-citrus" viewBox="0 0 120 120"><use href="#citrus"/></svg>
+        </div>
+      </header>
+
+      <div class="wrap pull">
+        <form id="brewForm" class="card form" novalidate>
+          <div class="step">
+            <label for="goal"><span class="no">1</span> What should your drink do for you?</label>
+            <input id="goal" name="goal" type="text" maxlength="120" autocomplete="off" placeholder="a soothing drink for a cold evening">
+            <div class="suggest" id="goalSuggest"></div>
+          </div>
+
+          <div class="step">
+            <label for="pantryInput"><span class="no">2</span> What is on your shelf?</label>
+            <div class="add-row">
+              <input id="pantryInput" type="text" autocomplete="off" placeholder="ginger, lemon peel, cinnamon stick (commas add several)">
+              <button type="button" class="btn btn-ghost" id="pantryAdd">Add</button>
+            </div>
+            <div class="chips" id="pantryChips" aria-label="Your shelf"></div>
+          </div>
+
+          <div class="step">
+            <label for="allergyInput"><span class="no">3</span> Anything to keep out of your cup?</label>
+            <div class="add-row">
+              <input id="allergyInput" type="text" autocomplete="off" placeholder="tree nuts, dairy, ragweed, kiwi">
+              <button type="button" class="btn btn-ghost" id="allergyAdd">Add</button>
+            </div>
+            <div class="chips chips-allergy" id="allergyChips" aria-label="Allergies"></div>
+            <div class="suggest" id="allergySuggest"></div>
+            <p class="hint">Kept only in this browser. Matching items are removed before anything is searched or written.</p>
+          </div>
+
+          <div class="form-foot">
+            <p id="formMsg" role="status" aria-live="polite"></p>
+            <button class="btn btn-main" id="brewBtn" type="button">Brew it</button>
+          </div>
+        </form>
+
+        <div id="results" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ---------- IDENTIFY ---------- -->
+    <section class="view" id="view-identify" hidden>
+      <div class="wrap">
+        <header class="page-head">
+          <span class="kicker-pill">what is that plant?</span>
+          <h2 class="page-title">Identify</h2>
+          <p class="lede">Show me an ingredient you cannot name. I will look it up, and you can add it to your shelf.</p>
+          <svg class="head-art" viewBox="0 0 120 160" aria-hidden="true"><use href="#leaf"/></svg>
+        </header>
+
+        <div class="card panel">
+          <div class="drop" id="drop">
+            <input id="herbFile" type="file" accept="image/jpeg,image/png,image/webp">
+            <label for="herbFile" class="drop-label" id="dropLabel">
+              <strong>Choose a photo</strong>
+              <span>JPG, PNG or WebP. Photos need the public link described in the README.</span>
+            </label>
+            <img id="herbPreview" alt="Your photo" hidden>
+          </div>
+          <p class="or"><span>or paste a picture link</span></p>
+          <div class="add-row">
+            <input id="herbUrl" type="url" placeholder="https://example.com/ingredient.jpg" autocomplete="off">
+            <button type="button" class="btn" id="scanBtn">Identify</button>
+          </div>
+          <p id="scanMsg" class="msg" role="status" aria-live="polite"></p>
+          <div id="scanOut"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- PAGES ---------- -->
+    <section class="view" id="view-pages" hidden>
+      <div class="wrap">
+        <header class="page-head">
+          <span class="kicker-pill">read the recipes below</span>
+          <h2 class="page-title">Pages</h2>
+          <p class="lede">Paste the link to a page. I will pull out the plain text so you can read it.</p>
+          <svg class="head-art" viewBox="0 0 44 150" aria-hidden="true"><use href="#cinnamon"/></svg>
+        </header>
+
+        <div class="card panel">
+          <div class="add-row">
+            <input id="pageUrl" type="url" placeholder="https://example.com/recipe" autocomplete="off">
+            <button type="button" class="btn" id="pageBtn">Read it</button>
+          </div>
+          <p id="pageMsg" class="msg" role="status" aria-live="polite"></p>
+          <div id="pageOut"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- LEDGER ---------- -->
+    <section class="view" id="view-ledger" hidden>
+      <div class="wrap">
+        <header class="page-head">
+          <span class="kicker-pill">what the kitchen has done</span>
+          <h2 class="page-title">Ledger</h2>
+          <p class="lede">Real counts from this server: searches saved, listings found, brews made, and recipes held back.</p>
+          <svg class="head-art" viewBox="0 0 120 120" aria-hidden="true"><use href="#citrus"/></svg>
+        </header>
+
+        <div id="ledgerOut"><p class="msg">Loading…</p></div>
+      </div>
+    </section>
+
+    <!-- ---------- SETTINGS ---------- -->
+    <section class="view" id="view-settings" hidden>
+      <div class="wrap">
+        <header class="page-head">
+          <span class="kicker-pill">make it yours</span>
+          <h2 class="page-title">Settings</h2>
+          <p class="lede">Where you are decides which results you see. Everything here stays in this browser.</p>
+          <svg class="head-art" viewBox="0 0 100 100" aria-hidden="true"><use href="#flower"/></svg>
+        </header>
+
+        <div class="card panel">
+          <h3 class="panel-title">Where are you?</h3>
+          <div class="add-row">
+            <input id="locQuery" type="text" placeholder="search for your city" autocomplete="off">
+            <button type="button" class="btn btn-ghost" id="locSearch">Search</button>
+          </div>
+          <p id="locMsg" class="msg" role="status" aria-live="polite"></p>
+          <div id="locOut" class="loc-list"></div>
+
+          <div class="grid4">
+            <div><label class="field-label" for="locName">Location</label><input id="locName" type="text"></div>
+            <div><label class="field-label" for="locGl">Country (gl)</label><input id="locGl" type="text" maxlength="5"></div>
+            <div><label class="field-label" for="locHl">Language (hl)</label><input id="locHl" type="text" maxlength="8"></div>
+            <div><label class="field-label" for="locDomain">Google domain</label><input id="locDomain" type="text"></div>
+          </div>
+          <div class="form-foot">
+            <p id="locSaved" class="msg" role="status" aria-live="polite"></p>
+            <button type="button" class="btn" id="locSave">Save place</button>
+          </div>
+        </div>
+
+        <div class="card panel">
+          <h3 class="panel-title">Clear this browser</h3>
+          <p class="hint">Removes your shelf, allergies and settings from this browser. Nothing is kept on the server.</p>
+          <button type="button" class="btn btn-ghost" id="wipeBtn">Clear my data</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">Educational only, not medical advice. Check with a clinician or pharmacist before using herbs.</footer>
+  </main>
+</div>
+
+<script src="app.js" defer></script>
+</body>
+</html>
