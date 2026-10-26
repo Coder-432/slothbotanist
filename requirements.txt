@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+pydantic>=2
+serpapi
+requests
+python-multipart
+torch
+transformers
+accelerate
