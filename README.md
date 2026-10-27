@@ -10,6 +10,8 @@ SlothBotanist, an AI-powered herbal drink maker that transforms the ingredients 
 ![pip](https://img.shields.io/badge/pip_26.x-3776AB?style=for-the-badge&logo=pypi&logoColor=white)
 ![Unit Testing](https://img.shields.io/badge/Python_unittests-brightgreen?style=for-the-badge&logo=python&logoColor=white)
 
+<img width="1408" height="768" alt="Gemini_Generated_Image_1vvzk01vvzk01vvz" src="https://github.com/user-attachments/assets/484cf183-8960-4db6-aba3-12bbbb72e8a9" />
+
 ## What is SlothBotanist?
 SlothBotanist, an AI-powered herbal drink maker that transforms the ingredients you already have into two distinct drink creations.
 
@@ -25,9 +27,13 @@ The goal is to help users discover new combinations without turning every drink 
 
 ## Key Features
 **1. Multi-Engine Recipe Generation:** Input your drink goal, shelf ingredients, and allergies to get two distinct drinks (Heritage Elixir and Modern Refresh) created by a local LLM powered by 10 parallel SerpApi search engines. Includes one-click Copy and Print.
+
 **2.Complete Recipe Intelligence:** View allergen exclusions, safety cautions, seasonal interest peak charts, picture links, research notes, and a live "Search Crew" dashboard showing the status of all 10 engines.
+
 **3.Visual Identification:** Upload a photo or paste an image link to identify unknown herbs using Google Lens (SerpApi). Pick from top matches and click Add to my shelf directly from an editable input box.
+
 **4.Distraction-Free Reader:** Paste any recipe or web article link to strip out ads and clutter, leaving only clean plain text via SerpApi’s Extract API.
+
 **5.Location Search & Privacy Control:** Search your city to auto-set local country, language, and Google domain parameters. Features a 2-click browser reset button. All user data (shelf, allergies, location) is kept 100% private in local browser storage.
 
 ## Navigation & App Architecture
